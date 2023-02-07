@@ -1,4 +1,17 @@
-import { Box, Button, Flex, Input } from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Checkbox,
+  Flex,
+  HStack,
+  IconButton,
+  Input,
+  ListItem,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 
 const MainBody = () => {
@@ -35,7 +48,7 @@ const MainBody = () => {
   };
   return (
     <Box color={"black"} bg="white" maxW={"700px"} m="50px auto" p={"50px"}>
-      <Flex direction={{ base: "row" }}>
+      <Flex direction={{ base: "row" }} mb={5}>
         <Input
           type="text"
           value={userInput}
@@ -45,9 +58,49 @@ const MainBody = () => {
             SetUserInput(e.target.value);
           }}
         ></Input>
-        <Button colorScheme="teal" variant="solid" onClick={handleAddTodo}>
-          Add todo
-        </Button>
+        <ButtonGroup
+          size="md"
+          isAttached
+          variant="outline"
+          colorScheme="teal"
+          onClick={handleAddTodo}
+        >
+          <Button>Add todo</Button>
+          <IconButton aria-label="Add to friends" icon={<AddIcon />} />
+        </ButtonGroup>
+      </Flex>
+      <Flex>
+        <UnorderedList listStyleType="none">
+          {todo.map((task) => {
+            return (
+              <>
+                <ListItem key={task.id} mb={5}>
+                  <HStack>
+                    <Checkbox
+                      size="lg"
+                      colorScheme="green"
+                      onChange={() => handleCheckbox(task)}
+                    >
+                      {" "}
+                      <Text pr={5} pl={5} size="md">
+                        {task.todoText}
+                      </Text>
+                    </Checkbox>
+
+                    <Button
+                      variant="outline"
+                      colorScheme="teal"
+                      size="sm"
+                      onClick={() => handleDelete(task)}
+                    >
+                      Delete
+                    </Button>
+                  </HStack>
+                </ListItem>
+              </>
+            );
+          })}
+        </UnorderedList>
       </Flex>
     </Box>
   );

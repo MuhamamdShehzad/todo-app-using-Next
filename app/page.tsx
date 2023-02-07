@@ -1,6 +1,5 @@
 "use client";
 import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
-import { ClassNames } from "@emotion/react";
 import React from "react";
 import { useState } from "react";
 import Header from "./components/Header";
@@ -43,14 +42,13 @@ const page = () => {
         textAlign={{ base: "center", md: "center", lg: "center" }}
         p="20px"
         bg="#6B46C1"
-        /*pt="50px"
+        pt="50px"
         pb="50px"
         mt="100px"
         mb="100px"
         ml="200px"
-        mr="200px" */
+        mr="200px"
         color="white"
-        w="100%"
       >
         <Header />
 
