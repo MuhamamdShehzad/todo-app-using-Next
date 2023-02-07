@@ -1,11 +1,7 @@
-"use client";
-import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
-import { ClassNames } from "@emotion/react";
-import React from "react";
-import { useState } from "react";
-import Header from "./components/Header";
-import MainBody from "./components/MainBody";
-const page = () => {
+import { Box, Button, Flex, Input } from "@chakra-ui/react";
+import React, { useState } from "react";
+
+const MainBody = () => {
   const [id, SetId] = useState(2);
   const [userInput, SetUserInput] = useState("");
   const [todo, SetTodo] = useState([
@@ -38,26 +34,23 @@ const page = () => {
     SetTodo(newtodo);
   };
   return (
-    <ChakraProvider>
-      <Box
-        textAlign={{ base: "center", md: "center", lg: "center" }}
-        p="20px"
-        bg="#6B46C1"
-        /*pt="50px"
-        pb="50px"
-        mt="100px"
-        mb="100px"
-        ml="200px"
-        mr="200px" */
-        color="white"
-        w="100%"
-      >
-        <Header />
-
-        <MainBody />
-      </Box>
-    </ChakraProvider>
+    <Box color={"black"} bg="white" maxW={"700px"} m="50px auto" p={"50px"}>
+      <Flex direction={{ base: "row" }}>
+        <Input
+          type="text"
+          value={userInput}
+          placeholder="Enter any text"
+          variant="outline"
+          onChange={(e) => {
+            SetUserInput(e.target.value);
+          }}
+        ></Input>
+        <Button colorScheme="teal" variant="solid" onClick={handleAddTodo}>
+          Add todo
+        </Button>
+      </Flex>
+    </Box>
   );
 };
 
-export default page;
+export default MainBody;

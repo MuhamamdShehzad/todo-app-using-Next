@@ -1,10 +1,7 @@
 "use client";
-import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
-import { ClassNames } from "@emotion/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
-import Header from "./components/Header";
-import MainBody from "./components/MainBody";
 const page = () => {
   const [id, SetId] = useState(2);
   const [userInput, SetUserInput] = useState("");
@@ -39,23 +36,38 @@ const page = () => {
   };
   return (
     <ChakraProvider>
-      <Box
-        textAlign={{ base: "center", md: "center", lg: "center" }}
-        p="20px"
-        bg="#6B46C1"
-        /*pt="50px"
-        pb="50px"
-        mt="100px"
-        mb="100px"
-        ml="200px"
-        mr="200px" */
-        color="white"
-        w="100%"
-      >
-        <Header />
-
-        <MainBody />
-      </Box>
+      <div>
+        <h1> My Todo App</h1>
+        <br />
+        <input
+          type="text"
+          value={userInput}
+          placeholder="Enter any text"
+          style={{ backgroundColor: "grey" }}
+          onChange={(e) => {
+            SetUserInput(e.target.value);
+          }}
+        ></input>
+        <button onClick={handleAddTodo}>Add todo</button>
+        <br />
+        <ul>
+          {todo.map((task) => {
+            return (
+              <>
+                <li key={task.id}>
+                  <input
+                    type="checkbox"
+                    checked={task.completed}
+                    onChange={() => handleCheckbox(task)}
+                  ></input>
+                  {task.todoText}
+                  <button onClick={() => handleDelete(task)}>Delete</button>
+                </li>
+              </>
+            );
+          })}
+        </ul>
+      </div>
     </ChakraProvider>
   );
 };
