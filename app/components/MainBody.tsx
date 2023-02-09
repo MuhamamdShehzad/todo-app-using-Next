@@ -18,8 +18,8 @@ const MainBody = () => {
   const [id, SetId] = useState(2);
   const [userInput, SetUserInput] = useState("");
   const [todo, SetTodo] = useState([
-    { id: 0, todoText: "Hello", completed: false },
-    { id: 1, todoText: "World", completed: false },
+    { id: 0, todoText: "Homework", completed: false },
+    { id: 1, todoText: "Gyming", completed: false },
   ]);
 
   const handleCheckbox = (meraTodo: any) => {
@@ -48,12 +48,13 @@ const MainBody = () => {
   };
   return (
     <Box color={"black"} bg="white" maxW={"700px"} m="50px auto" p={"50px"}>
-      <Flex direction={{ base: "row" }} mb={5}>
+      <Flex direction={{ base: "row" }} mb={5} textColor="black">
         <Input
           type="text"
           value={userInput}
           placeholder="Enter any text"
           variant="outline"
+          border={"2px solid black"}
           onChange={(e) => {
             SetUserInput(e.target.value);
           }}
@@ -62,7 +63,7 @@ const MainBody = () => {
           size="md"
           isAttached
           variant="outline"
-          colorScheme="teal"
+          colorScheme="black"
           onClick={handleAddTodo}
         >
           <Button>Add todo</Button>
@@ -75,18 +76,15 @@ const MainBody = () => {
             return (
               <>
                 <ListItem key={task.id} mb={5}>
-                  <HStack>
+                  <Flex>
                     <Checkbox
                       size="lg"
                       colorScheme="green"
                       onChange={() => handleCheckbox(task)}
-                    >
-                      {" "}
-                      <Text pr={5} pl={5} size="md">
-                        {task.todoText}
-                      </Text>
-                    </Checkbox>
-
+                    ></Checkbox>
+                    <Text pr={5} pl={5} size="md">
+                      {task.todoText}
+                    </Text>
                     <Button
                       variant="outline"
                       colorScheme="teal"
@@ -95,7 +93,7 @@ const MainBody = () => {
                     >
                       Delete
                     </Button>
-                  </HStack>
+                  </Flex>
                 </ListItem>
               </>
             );
