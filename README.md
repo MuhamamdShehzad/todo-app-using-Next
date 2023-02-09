@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Deployed at: https://todo-app-using-next.vercel.app
+Deployed at: https://my-todo-app-steel-two.vercel.app
 
 ## Getting Started
 
